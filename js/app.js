@@ -1,4 +1,4 @@
-// Version 2.1
+// Version 3.0
 
 (() => {
   "use strict";
@@ -24,36 +24,12 @@
   ];
 
   const REGION_DATA = {
-    ambient: {
-      name: "Room Air",
-      mode: "Convection",
-      temperatures: [72, 73, 75, 78, 82],
+    potLid: {
+      name: "Pot Lid",
+      mode: "Conduction and convection",
+      temperatures: [145, 170, 190, 205, 212],
       explanation:
-        "The surrounding air warms gradually as heat is carried away from the burner and pot by natural convection."
-    },
-
-    wall: {
-      name: "Wall / Background",
-      mode: "Radiation and convection",
-      temperatures: [72, 73, 75, 78, 82],
-      explanation:
-        "The wall receives a small amount of radiant heat from the flame and pot while nearby warm air also raises its temperature."
-    },
-
-    stoveSurface: {
-      name: "Stove Surface",
-      mode: "Radiation and conduction",
-      temperatures: [78, 84, 92, 105, 120],
-      explanation:
-        "The stove surface absorbs radiant heat from the flame and conducts heat through the solid cooktop material."
-    },
-
-    hotAir: {
-      name: "Warm Air Above the Pot",
-      mode: "Convection",
-      temperatures: [78, 88, 105, 125, 150],
-      explanation:
-        "Heated air and water vapor become less dense and rise above the pot, carrying thermal energy upward by convection."
+        "The hot pot and steam transfer energy into the lid. Heat spreads through the glass by conduction while hot vapor warms its underside by convection."
     },
 
     lidHandle: {
@@ -61,23 +37,15 @@
       mode: "Conduction",
       temperatures: [92, 105, 125, 145, 165],
       explanation:
-        "Heat travels through the metal lid into the handle by conduction. The handle remains cooler because it is farther from the heat source."
+        "Heat travels through the glass lid into the handle by conduction. The handle remains cooler because it is farther from the heat source."
     },
 
-    potLid: {
-      name: "Pot Lid",
-      mode: "Conduction and convection",
-      temperatures: [145, 170, 190, 205, 212],
-      explanation:
-        "The hot pot and steam transfer energy into the lid. Heat spreads through the metal by conduction while hot vapor warms its underside by convection."
-    },
-
-    potHandle: {
-      name: "Long Pot Handle",
+    potBody: {
+      name: "Side of the Pot",
       mode: "Conduction",
-      temperatures: [85, 95, 110, 128, 145],
+      temperatures: [175, 205, 230, 255, 280],
       explanation:
-        "Heat conducts from the hot pot body into the metal handle. The temperature decreases farther away from the pot."
+        "Heat moves through the solid glass from the hotter bottom toward the sides and upper portions of the pot by conduction."
     },
 
     water: {
@@ -88,20 +56,28 @@
         "Water near the heated bottom becomes warmer and rises while cooler water sinks. This circulation transfers heat through the water by convection."
     },
 
-    potBody: {
-      name: "Side of the Pot",
-      mode: "Conduction",
-      temperatures: [175, 205, 230, 255, 280],
-      explanation:
-        "Heat moves through the solid metal from the hotter bottom toward the sides and upper portions of the pot by conduction."
-    },
-
     potBottom: {
       name: "Bottom of the Pot",
       mode: "Conduction",
       temperatures: [260, 310, 350, 390, 430],
       explanation:
         "The flame heats the bottom surface directly. The metal then conducts energy into the rest of the pot and into the water."
+    },
+
+    potHandle: {
+      name: "Long Pot Handle",
+      mode: "Conduction",
+      temperatures: [85, 95, 110, 128, 145],
+      explanation:
+        "Heat conducts from the hot pot body into the metal handle. The temperature decreases farther away from the pot."
+    },
+
+    flame: {
+      name: "Gas Flame",
+      mode: "Radiation and convection",
+      temperatures: [1500, 1600, 1700, 1800, 1900],
+      explanation:
+        "The flame transfers heat to the pot by thermal radiation and by hot combustion gases flowing around the pot."
     },
 
     grate: {
@@ -112,12 +88,52 @@
         "The grate absorbs radiant energy from the flame and conducts heat through the solid metal supports."
     },
 
-    flame: {
-      name: "Gas Flame",
-      mode: "Radiation and convection",
-      temperatures: [1500, 1600, 1700, 1800, 1900],
+    hotAir: {
+      name: "Warm Air Above the Pot",
+      mode: "Convection",
+      temperatures: [78, 88, 105, 125, 150],
       explanation:
-        "The flame transfers heat to the pot by thermal radiation and by hot combustion gases flowing around the pot."
+        "Heated air and water vapor become less dense and rise above the pot, carrying thermal energy upward by convection."
+    },
+
+    stoveSurface: {
+      name: "Stove Surface",
+      mode: "Radiation and conduction",
+      temperatures: [78, 84, 92, 105, 120],
+      explanation:
+        "The stove surface absorbs radiant heat from the flame and conducts heat through the solid cooktop material."
+    },
+
+    wall: {
+      name: "Wall / Background",
+      mode: "Radiation and convection",
+      temperatures: [72, 73, 75, 78, 82],
+      explanation:
+        "The wall receives a small amount of radiant heat from the flame and pot while nearby warm air also raises its temperature."
+    },
+
+    walll: {
+      name: "wall",
+      mode: "Radiation and convection",
+      temperatures: [72, 73, 75, 78, 82],
+      explanation:
+        "The wall receives a small amount of radiant heat from the flame and pot while nearby warm air also raises its temperature."
+    },
+
+    wallll: {
+      name: "wall",
+      mode: "radiation and convection",
+      temperatures: [72, 73, 75, 78, 82],
+      explanation:
+        "The wall receives a small amount of radiant heat from the flame and pot while nearby warm air also raises its temperature."
+    },
+
+    ambient: {
+      name: "Room Air",
+      mode: "Convection",
+      temperatures: [72, 73, 75, 78, 82],
+      explanation:
+        "The surrounding air warms gradually as heat is carried away from the burner and pot by natural convection."
     }
   };
 
@@ -855,17 +871,19 @@
     }
   );
 
-  debugToggle.addEventListener(
-    "change",
-    () => {
-      document
-        .querySelectorAll(".hit-region")
-        .forEach((region) => {
-          region.classList.toggle(
-            "debug",
-            debugToggle.checked
-          );
-        });
-    }
-  );
+  if (debugToggle) {
+    debugToggle.addEventListener(
+      "change",
+      () => {
+        document
+          .querySelectorAll(".hit-region")
+          .forEach((region) => {
+            region.classList.toggle(
+              "debug",
+              debugToggle.checked
+            );
+          });
+      }
+    );
+  }
 })();

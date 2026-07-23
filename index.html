@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Version 2.0 -->
+  <!-- Version 3.0 STORYLINE -->
 
   <title>Heat Transfer Explorer</title>
 
-  <link rel="stylesheet" href="./css/styles.css?v=2.0" />
+  <link rel="stylesheet" href="./css/styles.css?v=3.0" />
 </head>
 
 <body>
@@ -48,67 +48,79 @@
           <polygon
             class="hit-region"
             data-region="potLid"
-            points="172,313 240,267 409,225 674,204 907,220 1092,268 1164,321 1106,354 887,374 587,373 329,359 207,339"
+            points="70,248 212,197 383,150 631,132 902,168 1091,219 1180,258 1166,301 977,344 728,351 526,354 351,339 205,321 88,286"
           />
 
           <polygon
             class="hit-region"
             data-region="lidHandle"
-            points="458,193 506,98 593,54 708,68 773,147 759,209 707,192 693,131 653,91 578,89 530,124 504,194"
+            points="373,135 439,120 468,19 481,2 523,1 773,3 814,78 833,149 895,172 876,195 784,163 766,105 731,13 518,18 497,74 472,139 378,158"
           />
 
           <polygon
             class="hit-region"
             data-region="potBody"
-            points="112,365 1171,365 1151,756 1095,833 991,864 229,861 138,815"
+            points="1139,496 1082,475 932,470 756,462 507,460 246,474 119,517 116,323 256,345 445,361 655,366 974,360 1148,328"
           />
 
           <polygon
             class="hit-region"
             data-region="water"
-            points="154,447 1004,447 1004,788 154,788"
+            points="1141,715 1118,774 1014,819 796,859 574,863 234,820 139,773 122,657 128,524 244,474 429,451 585,460 742,455 914,460 1034,481 1138,507 1146,531"
           />
 
           <polygon
             class="hit-region"
             data-region="potBottom"
-            points="155,789 1020,789 1084,845 991,876 233,876 149,836"
+            points="148,807 279,862 487,889 802,886 976,857 1096,831 1134,785 973,839 727,869 648,872 485,865 290,841"
           />
 
           <polygon
             class="hit-region"
             data-region="potHandle"
-            points="1090,279 1496,151 1604,159 1490,203 1140,341"
+            points="1151,227 1591,85 1623,111 1510,148 1200,262"
           />
 
           <polygon
             class="hit-region"
             data-region="flame"
-            points="142,838 223,785 337,779 506,829 687,829 853,786 989,796 1103,858 1034,955 238,953"
+            points="149,814 222,847 360,888 549,897 739,897 913,875 1010,852 1098,841 914,1005 714,1042 524,1060 354,1035 219,968"
           />
 
           <polygon
             class="hit-region"
             data-region="grate"
-            points="0,791 147,797 236,867 346,944 531,955 765,952 941,894 1114,831 1192,865 1028,1010 172,1012 0,935"
+            points="1050,909 1081,942 1094,986 1176,962 1160,888 1112,836 1048,899"
           />
 
           <polygon
             class="hit-region"
             data-region="hotAir"
-            points="126,0 1118,0 1121,299 964,232 766,196 481,196 262,238 127,304"
+            points="797,3 1118,0 1127,225 972,178 931,169 844,137 830,102 803,40"
           />
 
           <polygon
             class="hit-region"
             data-region="stoveSurface"
-            points="1094,572 1920,605 1920,1080 1027,1080 1114,843"
+            points="1593,698 1905,734 1630,1071 1109,1076 1234,988"
           />
 
           <polygon
             class="hit-region"
             data-region="wall"
-            points="1115,0 1920,0 1920,605 1093,572"
+            points="1160,309 1920,0 1920,605 1157,577"
+          />
+
+          <polygon
+            class="hit-region"
+            data-region="walll"
+            points="1098,11 1105,58 1133,98 1128,109 1154,121 1138,116 1147,198 1232,173 1380,127 1493,88 1578,74 1592,11"
+          />
+
+          <polygon
+            class="hit-region"
+            data-region="wallll"
+            points="25,18 166,28 335,14 452,18 427,92 353,131 240,159 120,194 53,219 46,272 71,332 99,364 95,558 21,540"
           />
         </svg>
       </div>
@@ -125,10 +137,7 @@
         </p>
       </aside>
 
-      <label class="debug-toggle">
-        <input type="checkbox" id="debugToggle" />
-        <span>Show mapped regions</span>
-      </label>
+      <!-- Storyline mode: developer controls removed. -->
 
       <section class="controls">
         <div class="control-header">
@@ -175,6 +184,6 @@
     </section>
   </main>
 
-  <script src="./js/app.js?v=2.1"></script>
+  <script src="./js/app.js?v=3.0"></script>
 </body>
 </html>
